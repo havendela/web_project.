@@ -1,0 +1,89 @@
+/* 
+Haven De La Cruz
+Section 001
+12/2/2025
+*/
+body{
+
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    background-color: lavender;
+}
+
+li{
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+a{
+    color: fuchsia; 
+    text-decoration:none;
+}
+a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
+}
+a:visited{
+    color: darkblue;
+}
+.bold {
+    font-weight: bold;
+}
+
+li.resumelistheading {
+    font-weight: bold;
+    font-style: normal;
+}
+
+ul li {
+    text-decoration: underline;
+}
+.justify{
+    text-align: justify;
+}
+
+.homebg {
+    background-image: url('../images/new_background.avif');  
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;  
+    height: 100vh;                 
+    width: 100vw;                  
+}
+
+
+
+.box1{
+    border-width: 1px;
+    border-style: solid;
+    border-color: darkblue;
+}
+.box2{
+    padding: 5px;
+
+}
+.box3{
+    margin: 50px;
+}
+
+/* video responsiveness */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  margin: 0 auto;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

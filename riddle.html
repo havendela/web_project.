@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Riddle Generator</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#222;padding:24px;}
+    .card{max-width:720px;margin:24px auto;padding:20px;background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    h1{margin-top:0}
+    .riddle{font-size:1.1rem;margin:16px 0;padding:12px;background:#f0f4ff;border-radius:6px}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}
+    button{padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+    button.primary{background:#0d6efd;color:#fff;border:none}
+    .answer{margin-top:12px;padding:10px;border-radius:6px;background:#eaf7ea;color:#0b6623;display:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Riddle Generator</h1>
+    <p>Click "New Riddle" to get a random riddle. Click "Show Answer" to reveal it.</p>
+
+    <div id="riddle" class="riddle">Press "New Riddle" to start.</div>
+
+    <div class="controls">
+      <button id="newBtn" class="primary">New Riddle</button>
+      <button id="showBtn">Show Answer</button>
+      <button id="copyBtn">Copy Riddle</button>
+    </div>
+
+    <div id="answer" class="answer"></div>
+  </div>
+
+  <script>
+    const riddles = [
+      {q: "I speak without a mouth and hear without ears. I have nobody, but I come alive with wind. What am I?", a: "An echo."},
+      {q: "I’m tall when I’m young and short when I’m old. What am I?", a: "A candle."},
+      {q: "What has keys but can't open locks?", a: "A piano."},
+      {q: "What gets wetter the more it dries?", a: "A towel."},
+      {q: "I have cities but no houses, forests but no trees, and water but no fish. What am I?", a: "A map."}
+    ];
+
+    const riddleDiv = document.getElementById('riddle');
+    const answerDiv = document.getElementById('answer');
+    document.getElementById('newBtn').addEventListener('click', () => {
+      const idx = Math.floor(Math.random()*riddles.length);
+      riddleDiv.textContent = riddles[idx].q;
+      answerDiv.textContent = riddles[idx].a;
+      answerDiv.style.display = 'none';
+    });
+    document.getElementById('showBtn').addEventListener('click', () => {
+      if(answerDiv.textContent) answerDiv.style.display = 'block';
+    });
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(riddleDiv.textContent + " — " + (answerDiv.style.display === 'block' ? answerDiv.textContent : ''));
+        alert('Copied to clipboard!');
+      } catch (e) { alert('Copy failed.'); }
+    });
+  </script>
+</body>
+</html>
